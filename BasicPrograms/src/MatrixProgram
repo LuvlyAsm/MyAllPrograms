@@ -1,0 +1,72 @@
+package Package_1;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class MatricProgram {
+
+	static Scanner scan = new Scanner(System.in);
+
+	public static void main(String[] args) {
+
+		System.out.println("Enter Row");
+		int row = scan.nextInt();
+		System.out.println("Enter Column");
+		int column = scan.nextInt();
+
+		int array[][] = new int[row][column];
+		LinkedList<Integer> list = new LinkedList();
+
+		//getting user input from array 
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				System.out.println("Enter array[" + i + "][" + j + "]");
+				int userValue = scan.nextInt();
+				array[i][j] = userValue;
+				list.add(userValue);
+			}
+		}
+
+		// System.out.println(Arrays.deepToString(array));    //to print array directly by name
+
+		// printing array matrix
+		System.out.println("\nYour Array Matrix is :\n");		
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				System.out.print(array[i][j] + " ");
+			}
+			System.out.println();
+		}
+
+		MatricProgram mat = new MatricProgram();
+		mat.transpose(list, column, row);
+
+	}
+
+	void transpose(LinkedList<Integer> list, int row, int column) {
+
+		int index = 0;
+		int arrayTranspose[][] = new int[row][column];
+
+		//Setting transpose array
+		for (int i = 0; i < column; i++) {
+			for (int j = 0; j < row; j++) {
+				arrayTranspose[j][i] = list.get(index);
+				index++;
+			}
+			System.out.println();
+		}
+    // System.out.println(Arrays.deepToString(arrayTranspose));  //to print array directly by name
+       
+		System.out.println("\nAfter Transporting Your Array Matrix is :\n");
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				System.out.print(arrayTranspose[i][j] + " ");
+			}
+			System.out.println();
+		} 
+	
+
+	}
+}
